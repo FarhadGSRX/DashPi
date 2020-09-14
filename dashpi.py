@@ -31,8 +31,8 @@ canvas2 = mx.CreateFrameCanvas()
 textColor = graphics.Color(255,0,255)
 font = graphics.Font()
 fontHuge = graphics.Font()
-font.LoadFont("/home/dietpi/rpi-rgb-leg-matrix/fonts/10x20.bdf")
-fontHuge.LoadFont("/home/dietpi/rpi-rgb-leg-matrix/fonts/20x40.bdf")
+font.LoadFont("/home/dietpi/DashPi/Misc/fonts/10x20.bdf")
+fontHuge.LoadFont("/home/dietpi/DashPi/Misc/fonts/20x40.bdf")
 
 
 def isNight():
