@@ -1,6 +1,0 @@
-
-import urllib2
-import subprocess
-
-import Image
-import ImageDraw
