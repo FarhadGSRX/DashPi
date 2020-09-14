@@ -11,29 +11,6 @@ import subprocess
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
 # from samplebase import SampleBase
 
-options = RGBMatrixOptions()
-options.rows=32
-options.cols=32
-options.chain_length=4
-options.brightness=50
-options.gpio_slowdown=4
-options.hardware_mapping = "regular"
-
-# Matrix Vars
-dayBright = 60
-nightBright = 20
-
-
-mx = RGBMatrix(options = options)
-canvas = mx.CreateFrameCanvas()
-canvas2 = mx.CreateFrameCanvas()
-
-textColor = graphics.Color(255,0,255)
-font = graphics.Font()
-fontHuge = graphics.Font()
-font.LoadFont("/home/dietpi/DashPi/Misc/fonts/10x20.bdf")
-fontHuge.LoadFont("/home/dietpi/DashPi/Misc/fonts/20x40.bdf")
-
 
 def isNight():
     if int(time.strftime("%H")) < 6:
@@ -103,8 +80,30 @@ def nightCycle():
 
 # Main function
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG, filename="DashPi_logfile.txt", filemode="a+",
-                        format="%(asctime)-15s %(levelname)-8s %(message)s")
+    options = RGBMatrixOptions()
+    options.rows = 32
+    options.cols = 32
+    options.chain_length = 4
+    options.brightness = 50
+    options.gpio_slowdown = 4
+    options.hardware_mapping = "regular"
+
+    # Matrix Vars
+    dayBright = 60
+    nightBright = 20
+
+    mx = RGBMatrix(options=options)
+    canvas = mx.CreateFrameCanvas()
+    canvas2 = mx.CreateFrameCanvas()
+    canvi = [canvas, canvas2]
+
+    textColor = graphics.Color(255, 0, 255)
+    font = graphics.Font()
+    fontHuge = graphics.Font()
+    font.LoadFont("/home/dietpi/DashPi/Misc/fonts/10x20.bdf")
+    fontHuge.LoadFont("/home/dietpi/DashPi/Misc/fonts/20x40.bdf")
+
+    #logging.basicConfig(level=logging.DEBUG, filename="DashPi_logfile.txt", filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
     logging.info('DashPi Main Called In, Starting up')
     go(True)
     logging.info('Exiting for some reason?')
