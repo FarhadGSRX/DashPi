@@ -47,20 +47,13 @@ def canvasFlip():
     else:
         canvi = [canvas, canvas2]
 
+def regCycle():
+    logging.info('Main - Reg Cycle')
+    graphics.DrawText(canvi[0], fontHuge, 15, 29, graphics.Color(255, 0, 255), time.strftime("%H:%M"))
+    canvasFlip()
+    canvi[0].Clear()
+    graphics.DrawText(canvi[0], fontHuge, 15, 29, graphics.Color(255, 0, 255), time.strftime("%H:%M"))
 
-
-def nightCycle():
-    logging.info('Main - Starting another Night Cycle')
-    for n in range(1):
-        canvasFlip()
-        canvi[0].Clear()
-        # Trying to generally move from left to right.
-        # Time
-        graphics.DrawText(canvi[0], fontHuge, 15, 29, graphics.Color(255,0,255), time.strftime("%H:%M"))
-        # Todo: Add Sun, Cloud, and Rain.
-        # WU
-        #graphics.DrawText(canvi[0], fontLarge, 100, 29, colorDict['green']['color'], wu_helper.getTemp())
-        #graphics.DrawText(canvi[0], fontSmall, 119, 19, colorDict['green']['color'], "o")
 
 
 """
@@ -88,13 +81,13 @@ def go(currentlyLogging=False):
                 mx.brightness = dayBright
                 canvasFlip()
                 mx.brightness = dayBright
-        nightCycle()
+        regCycle()
         time.sleep(60)
 
 
 # Main function
 if __name__ == "__main__":
     #logging.basicConfig(level=logging.DEBUG, filename="DashPi_logfile.txt", filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
-    logging.info('DashPi Main Called In, Starting up')
-    go(True)
-    logging.info('Exiting for some reason?')
+    #logging.info('DashPi Main Called In, Starting up')
+    go()
+    #logging.info('Exiting for some reason?')
