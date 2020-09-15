@@ -11,18 +11,18 @@ options = RGBMatrixOptions()
 options.rows = 32
 options.cols = 32
 options.chain_length = 4
-options.brightness = 50
+options.brightness = 30
 options.gpio_slowdown = 4
 options.hardware_mapping = "regular"
 
 # Matrix Vars
-dayBright = 60
-nightBright = 20
+dayBright = 50
+nightBright = 15
 
 mx = RGBMatrix(options=options)
-canvas = mx.CreateFrameCanvas()
+canvas1 = mx.CreateFrameCanvas()
 canvas2 = mx.CreateFrameCanvas()
-canvi = [canvas, canvas2]
+canvi = [canvas1, canvas2]
 
 textColor = graphics.Color(255, 0, 255)
 font = graphics.Font()
@@ -33,8 +33,7 @@ fontHuge.LoadFont("/home/dietpi/DashPi/Misc/fonts/20x40.bdf")
 # Old Notes I'm saving in case I run into old problems
 # os.environ['http_proxy']='' #Per http://code.activestate.com/lists/python-list/617037/ fixes an Errno -2 error I was getting during updateWU ##10/18/16 Commented this line out due to addition of the internetchecker. Can uncomment if problems suddenly reappear.
 
-graphics.DrawText(canvi[0], fontHuge, 15, 29, graphics.Color(255, 0, 255), time.strftime("%H:%M"))
-time.sleep(3)
+graphics.DrawText(canvi[0], font, 5, 29, graphics.Color(255, 0, 255), time.strftime("%H:%M:%S"))
 
 def isNight():
     return int(time.strftime("%H")) < 6
@@ -42,18 +41,13 @@ def isNight():
 def canvasFlip():
     global canvi, mx
     mx.SwapOnVSync(canvi[0])
-    if canvi == [canvas, canvas2]:
-        canvi = [canvas2, canvas]
-    else:
-        canvi = [canvas, canvas2]
+    canvi.reverse()
+    canvi[1].Clear()
 
 def regCycle():
     logging.info('Main - Reg Cycle')
-    graphics.DrawText(canvi[0], fontHuge, 15, 29, graphics.Color(255, 0, 255), time.strftime("%H:%M"))
+    graphics.DrawText(canvi[0], font, 15, 29, graphics.Color(255, 0, 255), time.strftime("%H:%M:%S"))
     canvasFlip()
-    canvi[0].Clear()
-    graphics.DrawText(canvi[0], fontHuge, 15, 29, graphics.Color(255, 0, 255), time.strftime("%H:%M"))
-
 
 
 """
@@ -71,18 +65,8 @@ def regCycle():
 
 def go(currentlyLogging=False):
     while True:
-        if isNight():
-            if mx.brightness == dayBright:
-                mx.brightness = nightBright
-                canvasFlip()
-                mx.brightness = nightBright
-        else:
-            if mx.brightness == nightBright:
-                mx.brightness = dayBright
-                canvasFlip()
-                mx.brightness = dayBright
         regCycle()
-        time.sleep(60)
+        time.sleep(0.5)
 
 
 # Main function
