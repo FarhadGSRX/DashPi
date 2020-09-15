@@ -40,13 +40,13 @@ def isNight():
 
 def canvasFlip():
     global canvi, mx
-    mx.SwapOnVSync(canvi[0])
     canvi.reverse()
     canvi[1].Clear()
 
 def regCycle():
     logging.info('Main - Reg Cycle')
-    graphics.DrawText(canvi[0], font, 15, 29, graphics.Color(255, 0, 255), time.strftime("%H:%M:%S"))
+    mx.SwapOnVSync(canvi[0])
+    graphics.DrawText(canvi[1], font, 15, 29, graphics.Color(255, 0, 255), time.strftime("%H:%M:%S"))
     canvasFlip()
 
 
