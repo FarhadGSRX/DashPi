@@ -16,10 +16,12 @@ options.gpio_slowdown = 4
 options.hardware_mapping = "regular"
 
 textColor = graphics.Color(255, 0, 255)
-font = graphics.Font()
-fontHuge = graphics.Font()
-font.LoadFont("/home/dietpi/DashPi/Misc/fonts/10x20.bdf")
-fontHuge.LoadFont("/home/dietpi/DashPi/Misc/fonts/20x40.bdf")
+font9 = graphics.Font()
+font10 = graphics.Font()
+font20 = graphics.Font()
+font9.LoadFont("/home/dietpi/DashPi/Misc/fonts/9x15B.bdf")
+font10.LoadFont("/home/dietpi/DashPi/Misc/fonts/10x20.bdf")
+font20.LoadFont("/home/dietpi/DashPi/Misc/fonts/20x40.bdf")
 
 # Daytime Color Spectrum
 daytime_color_spectrum = {0: graphics.Color(21, 40, 108),
@@ -38,6 +40,7 @@ daytime_color_spectrum = {0: graphics.Color(21, 40, 108),
                           1930: graphics.Color(253, 184, 21),
                           2100: graphics.Color(247, 148, 29),
                           2230: graphics.Color(74, 61, 107)}
+
 
 def color_the_time():
     # initializing nearest key
@@ -108,9 +111,16 @@ def go(currentlyLogging=False):
 
     while True:
         offset_canvas.Clear()
-        len = graphics.DrawText(offset_canvas, fontHuge, 3, 30, textColor, time.strftime("%H:%M"))
-        graphics.DrawText(offset_canvas, font, len + 5, 15, textColor, time.strftime("%a"))
-        graphics.DrawText(offset_canvas, font, len + 5, 30, textColor, time.strftime("%m/%d"))
+        print("cleared")
+        color_now = color_the_time()
+        # fyi, font20 has 2 empty pixels padding in every direction
+        len = graphics.DrawText(offset_canvas, font20, 0, 29, color_now, time.strftime("%H%M"))
+        graphics.DrawText(offset_canvas, font10, len + 1, 15, color_now, time.strftime("%a"))
+        graphics.DrawText(offset_canvas, font9, len + 1, 29, color_now, time.strftime("%m/%d"))
+
+        offset_canvas = mx.SwapOnVSync(offset_canvas)
+
+        time.sleep(20)
 
 
 
