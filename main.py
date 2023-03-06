@@ -9,11 +9,15 @@ from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
 # from samplebase import SampleBase
 options = RGBMatrixOptions()
 options.rows = 32
-options.cols = 32
-options.chain_length = 4
+options.cols = 64
+options.parallel = 3
+options.chain_length = 3
 options.brightness = 50
 options.gpio_slowdown = 4
 options.hardware_mapping = "regular"
+options.pixel_mapper_config = "Rotate:90"
+# options.disable_hardware_pulsing = False
+# options.drop_privileges = False
 
 textColor = graphics.Color(255, 0, 255)
 font9 = graphics.Font()
