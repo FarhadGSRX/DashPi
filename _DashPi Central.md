@@ -7,7 +7,7 @@ kanban-plugin: basic
 ## Hardware and Software
 
 - [ ] [[RasPi Initial Setup]]
-- [ ] [[DashPi Git Setup]]
+- [ ] [[DashPi Python and Git Setup]]
 - [ ] [[DashPi crontab Setup]]
 - [ ] [[DashPi Troubleshooting]]
 - [ ] [[Future Plans and Ideas]]
@@ -17,6 +17,7 @@ kanban-plugin: basic
 - [ ] http://vsftpd.beasts.org/vsftpd_conf.html
 - [ ] https://neovim.io/doc/user/editing.html
 - [ ] [[Software Configs and Setup]]
+- [ ] [[Git Snips]]
 
 
 ## Technical

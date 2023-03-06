@@ -1,4 +1,13 @@
+__pycache__
+DashPi-Old/*
 DashPi-old-master/*
+kanbin/*.*
+rgbmatrix/*
+rpi-rgb-led-matrix/*
+secrets/*.*
+
+Old LED Matrix Notes/*
+
 bin/Pasted image 20230218130600.png
 bin/Pasted image 20230305021138.png
-secrets/*.*
+_DashPi Central.md
