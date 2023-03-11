@@ -1,0 +1,6 @@
+[submodule "rgb-matrix"]
+	path = rgb-matrix
+	url = https://github.com/hzeller/rpi-rgb-led-matrix.git
+[submodule "RGBMatrixEmulator"]
+	path = RGBMatrixEmulator
+	url = https://github.com/ty-porter/RGBMatrixEmulator.git

@@ -18,6 +18,8 @@ kanban-plugin: basic
 - [ ] https://neovim.io/doc/user/editing.html
 - [ ] [[Software Configs and Setup]]
 - [ ] [[Git Snips]]
+- [ ] Updating the RasPi https://raspberry-valley.azurewebsites.net/Updating-Raspberry-Pi/
+- [ ] [FFmpeg Commands: 31 Must-Haves for Beginners in 2022 – VideoProc](https://www.videoproc.com/resource/ffmpeg-commands.htm)
 
 
 ## Technical
@@ -26,6 +28,7 @@ kanban-plugin: basic
 - [ ] https://github.com/hzeller/rpi-rgb-led-matrix
 - [ ] Wired Watts Order Number: 740577
 - [ ] Int IP: 192.168.0.192<br>Ext IP: 184.186.31.118
+- [ ] Using Git Submodules to load up the hzeller library automatically. Need to learn more about how this works.
 
 
 ## C++ Ideas
