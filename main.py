@@ -11,7 +11,8 @@ sys.path.append(os.path.dirname(__file__) + "/RGBMatrixEmulator")
 sys.path.append(os.path.dirname(__file__) + "/rpi-rgb-led-matrix/bindings/python")
 
 import graphics
-from rgbmatrix import RGBMatrix, RGBMatrixOptions # , graphics
+from RGBMatrixEmulator import RGBMatrix, RGBMatrixOptions# , graphics
+#from rgbmatrix import RGBMatrix, RGBMatrixOptions # , graphics
 
 # from samplebase import SampleBase
 options = RGBMatrixOptions()
@@ -34,7 +35,7 @@ font20 = graphics.Font()
 
 font9.LoadFont("Misc/fonts/9x15B.bdf")
 font10.LoadFont("Misc/fonts/10x20.bdf")
-font20.LoadFont("Misc/fonts/20x40.bdf")
+font20.LoadFont("Misc/fonts/20x40x2.bdf")
 
 
 # Daytime Color Spectrum

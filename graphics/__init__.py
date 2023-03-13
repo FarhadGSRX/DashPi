@@ -1,5 +1,6 @@
 from RGBMatrixEmulator.graphics.color import Color
 from RGBMatrixEmulator.graphics.font import Font
+import random
 
 
 def DrawText(canvas, font, x, y, color, text):
@@ -30,19 +31,19 @@ def DrawText(canvas, font, x, y, color, text):
         # Ensure text doesn't get drawn as multiple lines
         linelimit = len(text) * (font.headers['fbbx'] + 1)
 
-        text_map = font.bdf_font.draw(text, linelimit, missing=font.default_character).todata(2)
+        text_map = font.bdf_font.draw(text, linelimit, missing=font.default_character).glow(1).todata(2)
         font_y_offset = -(font.headers['fbby'] + font.headers['fbbyoff'])
 
+        gauss_factor = int(random.gauss(0,50))
+        color = tuple(min(max(x+gauss_factor,0),255) for x in color.to_tuple())
+        color2 = tuple(min(max(x+gauss_factor,0),255) for x in color)
         for y2, row in enumerate(text_map):
             for x2, value in enumerate(row):
                 if value == 1:
-                    try:
-                        if isinstance(color, tuple):
-                            canvas.SetPixel(x + x2, y + y2 + font_y_offset, *color)
-                        else:
-                            canvas.SetPixel(x + x2, y + y2 + font_y_offset, color.red, color.green, color.blue)
-                    except Exception:
-                        pass
+                    canvas.SetPixel(x + x2, y + y2 + font_y_offset, *color)
+                elif value == 2:
+                    canvas.SetPixel(x + x2, y + y2 + font_y_offset, *color2)
+                    
 
     return total_width
 

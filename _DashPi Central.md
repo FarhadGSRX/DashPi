@@ -35,6 +35,7 @@ Tags: Meta/DashPi
 - [ ] Wired Watts Order Number: 740577
 - [ ] Int IP: 192.168.0.189<br>Ext IP: 184.186.31.118
 - [ ] Using Git Submodules to load up the hzeller library automatically. Need to learn more about how this works.
+- [ ] [[Font Things]]
 
 
 ## C++ Ideas
