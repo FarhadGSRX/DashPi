@@ -1,6 +1,8 @@
+from cmath import cos
 from RGBMatrixEmulator.graphics.color import Color
 from RGBMatrixEmulator.graphics.font import Font
-import random
+import time
+from math import sin, cos
 
 
 def DrawText(canvas, font, x, y, color, text):
@@ -34,9 +36,12 @@ def DrawText(canvas, font, x, y, color, text):
         text_map = font.bdf_font.draw(text, linelimit, missing=font.default_character).glow(1).todata(2)
         font_y_offset = -(font.headers['fbby'] + font.headers['fbbyoff'])
 
-        gauss_factor = int(random.gauss(0,50))
-        color = tuple(min(max(x+gauss_factor,0),255) for x in color.to_tuple())
-        color2 = tuple(min(max(x+gauss_factor,0),255) for x in color)
+        r_adj = 2*sin(time.time())*50
+        g_adj = sin(2*time.time())*50
+        b_adj = cos(2*time.time())*50
+        adj = [r_adj, g_adj, b_adj]
+        color = tuple(min(max(x+adj[i],0),255) for i, x in enumerate(color.to_tuple()))
+        color2 = tuple(min(max(x+adj[i],0),255) for i, x in enumerate(color))
         for y2, row in enumerate(text_map):
             for x2, value in enumerate(row):
                 if value == 1:

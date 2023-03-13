@@ -35,7 +35,7 @@ font20 = graphics.Font()
 
 font9.LoadFont("Misc/fonts/9x15B.bdf")
 font10.LoadFont("Misc/fonts/10x20.bdf")
-font20.LoadFont("Misc/fonts/20x40x2.bdf")
+font20.LoadFont("Misc/fonts/20x40.bdf")
 
 
 # Daytime Color Spectrum
@@ -129,7 +129,7 @@ def go(currentlyLogging=False):
         print("cleared")
         color_now = color_the_time()
         # fyi, font20 has 2 empty pixels padding in every direction
-        len = graphics.DrawText(offset_canvas, font20, 0, 29, color_now, time.strftime("%H%M"))
+        len = graphics.DrawText(offset_canvas, font20, 0, 40, color_now, time.strftime("%H%M"))
         graphics.DrawText(offset_canvas, font10, len + 1, 15, color_now, time.strftime("%a"))
         graphics.DrawText(offset_canvas, font9, len + 1, 29, color_now, time.strftime("%m/%d"))
 

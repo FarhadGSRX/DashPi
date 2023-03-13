@@ -50,3 +50,15 @@
 2023-03-13 11:17:06,749 INFO     Loading RGBME v0.8.2 - 64x32 Matrix | 3x3 Chain | 4px per LED (SQUARE) | PygameAdapter
 2023-03-13 11:40:21,406 INFO     DashPi Main Called In, Starting up
 2023-03-13 11:40:21,451 INFO     Loading RGBME v0.8.2 - 64x32 Matrix | 3x3 Chain | 4px per LED (SQUARE) | PygameAdapter
+2023-03-13 12:35:38,449 INFO     DashPi Main Called In, Starting up
+2023-03-13 12:35:38,490 INFO     Loading RGBME v0.8.2 - 64x32 Matrix | 3x3 Chain | 4px per LED (SQUARE) | PygameAdapter
+2023-03-13 12:35:58,663 INFO     DashPi Main Called In, Starting up
+2023-03-13 12:35:58,695 INFO     Loading RGBME v0.8.2 - 64x32 Matrix | 3x3 Chain | 4px per LED (SQUARE) | PygameAdapter
+2023-03-13 12:45:40,004 INFO     DashPi Main Called In, Starting up
+2023-03-13 12:45:40,041 INFO     Loading RGBME v0.8.2 - 64x32 Matrix | 3x3 Chain | 4px per LED (SQUARE) | PygameAdapter
+2023-03-13 12:45:58,750 INFO     DashPi Main Called In, Starting up
+2023-03-13 12:45:58,800 INFO     Loading RGBME v0.8.2 - 64x32 Matrix | 3x3 Chain | 4px per LED (SQUARE) | PygameAdapter
+2023-03-13 12:46:13,689 INFO     DashPi Main Called In, Starting up
+2023-03-13 12:46:13,729 INFO     Loading RGBME v0.8.2 - 64x32 Matrix | 3x3 Chain | 4px per LED (SQUARE) | PygameAdapter
+2023-03-13 12:47:22,114 INFO     DashPi Main Called In, Starting up
+2023-03-13 12:47:22,150 INFO     Loading RGBME v0.8.2 - 64x32 Matrix | 3x3 Chain | 4px per LED (SQUARE) | PygameAdapter
