@@ -11,8 +11,8 @@ sys.path.append(os.path.dirname(__file__) + "/RGBMatrixEmulator")
 sys.path.append(os.path.dirname(__file__) + "/rpi-rgb-led-matrix/bindings/python")
 
 import graphics
-from RGBMatrixEmulator import RGBMatrix, RGBMatrixOptions# , graphics
-#from rgbmatrix import RGBMatrix, RGBMatrixOptions # , graphics
+#from RGBMatrixEmulator import RGBMatrix, RGBMatrixOptions# , graphics
+from rgbmatrix import RGBMatrix, RGBMatrixOptions # , graphics
 
 # from samplebase import SampleBase
 options = RGBMatrixOptions()
@@ -22,20 +22,19 @@ options.parallel = 3
 options.chain_length = 3
 options.brightness = 50
 options.gpio_slowdown = 4
-options.led_limit_refresh = 20
+#options.led_limit_refresh = 20
 options.hardware_mapping = "regular"
 options.pixel_mapper_config = "" # "Rotate:90"
 options.disable_hardware_pulsing = False
-options.drop_privileges = False
+options.drop_privileges = True
 
-textColor = graphics.Color(255, 0, 255)
 font9 = graphics.Font()
 font10 = graphics.Font()
 font20 = graphics.Font()
 
-font9.LoadFont("Misc/fonts/9x15B.bdf")
+font9.LoadFont("Misc/fonts/9x15.bdf")
 font10.LoadFont("Misc/fonts/10x20.bdf")
-font20.LoadFont("Misc/fonts/20x40.bdf")
+font20.LoadFont("Misc/fonts/20x40x2.bdf")
 
 
 # Daytime Color Spectrum
@@ -125,13 +124,17 @@ def go(currentlyLogging=False):
     """
 
     while True:
+        the_hour = int(time.strftime("%H"))
+        if 6 < the_hour and the_hour < 22:
+            mx.brightness = 75
+        else:
+            mx.brightness = 25
         offset_canvas.Clear()
-        print("cleared")
         color_now = color_the_time()
         # fyi, font20 has 2 empty pixels padding in every direction
-        len = graphics.DrawText(offset_canvas, font20, 0, 40, color_now, time.strftime("%H%M"))
-        graphics.DrawText(offset_canvas, font10, len + 1, 15, color_now, time.strftime("%a"))
-        graphics.DrawText(offset_canvas, font9, len + 1, 29, color_now, time.strftime("%m/%d"))
+        len = graphics.DrawText(offset_canvas, font20, 0, 58, color_now, time.strftime("%H%M"))
+        graphics.DrawText(offset_canvas, font10, len-20, 77, color_now, time.strftime("%a"))
+        graphics.DrawText(offset_canvas, font9, len-20, 28, color_now, time.strftime("%m/%d"))
 
         offset_canvas = mx.SwapOnVSync(offset_canvas)
 
@@ -139,7 +142,6 @@ def go(currentlyLogging=False):
 
 # Main function
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG, filename="DashPi_logfile.txt", filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
-    logging.info('DashPi Main Called In, Starting up')
+    # eventually remember how to log
     go()
-    logging.info('Exiting for some reason?')
+    
