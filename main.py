@@ -133,8 +133,8 @@ def go(currentlyLogging=False):
         color_now = color_the_time()
         # fyi, font20 has 2 empty pixels padding in every direction
         len = graphics.DrawText(offset_canvas, font20, 0, 58, color_now, time.strftime("%H%M"))
-        graphics.DrawText(offset_canvas, font10, len-20, 77, color_now, time.strftime("%a"))
-        graphics.DrawText(offset_canvas, font9, len-20, 93, color_now, time.strftime("%m/%d"))
+        graphics.DrawText(offset_canvas, font10, len-18, 77, color_now, time.strftime("%a"))
+        graphics.DrawText(offset_canvas, font9, len-18, 91, color_now, time.strftime("%m/%d"))
 
         offset_canvas = mx.SwapOnVSync(offset_canvas)
 
