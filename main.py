@@ -5,7 +5,14 @@ import time
 import json
 import subprocess
 
-from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
+# Yes, you should pipenv install RGBMatrixEmulator
+
+sys.path.append(os.path.dirname(__file__) + "/RGBMatrixEmulator")
+sys.path.append(os.path.dirname(__file__) + "/rpi-rgb-led-matrix/bindings/python")
+
+from RGBMatrixEmulator import RGBMatrix, RGBMatrixOptions, graphics
+# from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
+
 # from samplebase import SampleBase
 options = RGBMatrixOptions()
 options.rows = 32
@@ -23,9 +30,9 @@ textColor = graphics.Color(255, 0, 255)
 font9 = graphics.Font()
 font10 = graphics.Font()
 font20 = graphics.Font()
-font9.LoadFont("/home/dietpi/DashPi/Misc/fonts/9x15B.bdf")
-font10.LoadFont("/home/dietpi/DashPi/Misc/fonts/10x20.bdf")
-font20.LoadFont("/home/dietpi/DashPi/Misc/fonts/20x40.bdf")
+font9.LoadFont("Misc/fonts/9x15B.bdf")
+font10.LoadFont("Misc/fonts/10x20.bdf")
+font20.LoadFont("Misc/fonts/20x40.bdf")
 
 # Daytime Color Spectrum
 daytime_color_spectrum = {0: graphics.Color(21, 40, 108),
