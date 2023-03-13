@@ -49,6 +49,7 @@ Tags: Meta/DashPi
 
 - [ ] Review the RasPi's installed software and think of uses [[RasPi Initial Setup#DietPi-Software]]
 - [ ] https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/examples-api-use#other-examples
+- [ ] https://font.tomchen.org/bdfparser_js/editor/
 
 
 

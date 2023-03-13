@@ -5,13 +5,13 @@ import time
 import json
 import subprocess
 
-# Yes, you should pipenv install RGBMatrixEmulator
+# Yes, you should pipenv install RGBMatrixEmulator TODO: add to documentation
 
 sys.path.append(os.path.dirname(__file__) + "/RGBMatrixEmulator")
 sys.path.append(os.path.dirname(__file__) + "/rpi-rgb-led-matrix/bindings/python")
 
-from RGBMatrixEmulator import RGBMatrix, RGBMatrixOptions, graphics
-# from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
+import graphics
+from rgbmatrix import RGBMatrix, RGBMatrixOptions # , graphics
 
 # from samplebase import SampleBase
 options = RGBMatrixOptions()
@@ -21,18 +21,21 @@ options.parallel = 3
 options.chain_length = 3
 options.brightness = 50
 options.gpio_slowdown = 4
+options.led_limit_refresh = 20
 options.hardware_mapping = "regular"
-options.pixel_mapper_config = "Rotate:90"
-# options.disable_hardware_pulsing = False
-# options.drop_privileges = False
+options.pixel_mapper_config = "" # "Rotate:90"
+options.disable_hardware_pulsing = False
+options.drop_privileges = False
 
 textColor = graphics.Color(255, 0, 255)
 font9 = graphics.Font()
 font10 = graphics.Font()
 font20 = graphics.Font()
+
 font9.LoadFont("Misc/fonts/9x15B.bdf")
 font10.LoadFont("Misc/fonts/10x20.bdf")
 font20.LoadFont("Misc/fonts/20x40.bdf")
+
 
 # Daytime Color Spectrum
 daytime_color_spectrum = {0: graphics.Color(21, 40, 108),
@@ -87,7 +90,7 @@ def regCycle():
     logging.info('Main - Reg Cycle')
     #offset_canvas = mx.SwapOnVSync(offset_canvas)
     mx.SwapOnVSync(canvi[0])
-    graphics.DrawText(canvi[1], font, 15, 29, color_the_time(), time.strftime("%H:%M:%S"))
+    graphics.DrawText(canvi[1], font20, 15, 29, color_the_time(), time.strftime("%H:%M:%S"))
     canvasFlip()
 
 
@@ -130,8 +133,6 @@ def go(currentlyLogging=False):
         graphics.DrawText(offset_canvas, font9, len + 1, 29, color_now, time.strftime("%m/%d"))
 
         offset_canvas = mx.SwapOnVSync(offset_canvas)
-
-        time.sleep(20)
 
 
 
