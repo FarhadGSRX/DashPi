@@ -36,18 +36,18 @@ def DrawText(canvas, font, x, y, color, text):
         text_map = font.bdf_font.draw(text, linelimit, missing=font.default_character).glow(1).todata(2)
         font_y_offset = -(font.headers['fbby'] + font.headers['fbbyoff'])
 
-        r_adj = 2*sin(time.time())*50
-        g_adj = sin(2*time.time())*50
-        b_adj = cos(2*time.time())*50
-        adj = [r_adj, g_adj, b_adj]
-        color = tuple(min(max(x+adj[i],0),255) for i, x in enumerate(color.to_tuple()))
-        color2 = tuple(min(max(x+adj[i],0),255) for i, x in enumerate(color))
-        for y2, row in enumerate(text_map):
-            for x2, value in enumerate(row):
-                if value == 1:
-                    canvas.SetPixel(x + x2, y + y2 + font_y_offset, *color)
-                elif value == 2:
-                    canvas.SetPixel(x + x2, y + y2 + font_y_offset, *color2)
+        if len(color) == 2:  # Implies a tuple of colors of the form ((r,g,b), (r_adj, g_adj, b_adj))
+            for y2, row in enumerate(text_map):
+                for x2, value in enumerate(row):
+                    if value == 1:
+                        canvas.SetPixel(x + x2, y + y2 + font_y_offset, *color[0])
+                    elif value == 2:
+                        canvas.SetPixel(x + x2, y + y2 + font_y_offset, *color[1])
+        else:  # Implies a tuple of colors of the form (r,g,b)
+            for y2, row in enumerate(text_map):
+                for x2, value in enumerate(row):
+                    if value == 1:
+                        canvas.SetPixel(x + x2, y + y2 + font_y_offset, *color)
                     
 
     return total_width
