@@ -13,12 +13,12 @@ sys.path.append(os.path.dirname(__file__) + "/RGBMatrixEmulator")
 sys.path.append(os.path.dirname(__file__) + "/rpi-rgb-led-matrix/bindings/python")
 
 # Demoing on PC
-import graphics
-from RGBMatrixEmulator import RGBMatrix, RGBMatrixOptions #, graphics
+#import graphics
+#from RGBMatrixEmulator import RGBMatrix, RGBMatrixOptions #, graphics
 
 # Running on Pi
-#import graphics
-#from rgbmatrix import RGBMatrix, RGBMatrixOptions #, graphics
+import graphics
+from rgbmatrix import RGBMatrix, RGBMatrixOptions #, graphics
 
 # from samplebase import SampleBase
 options = RGBMatrixOptions()
@@ -154,7 +154,7 @@ def go(currentlyLogging=False):
         rgb_color_now = color_the_time(time.strftime("%H%M"), adjustment_degree)
 
         # fyi, font20 has 2 empty pixels padding in every direction
-        len = graphics.DrawText(offset_canvas, font20, 0, 56, rgb_color_now, time.strftime("%H%M%S"))
+        len = graphics.DrawText(offset_canvas, font20, 0, 56, rgb_color_now, time.strftime("%H%M"))
         graphics.DrawText(offset_canvas, font10, 3, 77, rgb_color_now, time.strftime("%a"))
         graphics.DrawText(offset_canvas, font9, 3, 91, rgb_color_now, time.strftime("%m/%d"))
         
