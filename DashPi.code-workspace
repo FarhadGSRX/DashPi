@@ -2,7 +2,15 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../fg_py_toolkit"
+		},
+		{
+			"path": "../allens-matrix-dash-fgedit"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.venvPath": "C:\\Users\\farha\\AppData\\Local\\pypoetry\\Cache\\virtualenvs",
+	}
 }
